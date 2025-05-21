@@ -16,8 +16,17 @@
     <h2>IoT Programming</h2>
     <img id="img" src="ledOff.png" width="40%">
     <div class="button-container">
-      <button type="button" onclick="ledON()">LED ON</button>
-      <button type="button" onclick="ledOFF()">LED OFF</button>
+      <button type="button" class="onbutton" onclick="ledON()">LED ON</button>
+      <button type="button" class="offbutton" onclick="ledOFF()">LED OFF</button>
+    </div>
+    <p id="temperature" class="temperature-text">현재 온도는 측정중입니다...</p>
+
+    <div class="chat-container">
+      <div id="chatbox" class="chatbox"></div>
+      <div class="input-button-container">
+        <input type="text" id="chatInput" placeholder="메시지를 입력하세요..." />
+        <button class="textbutton" onclick="sendMessage()">전송</button>
+      </div>
     </div>
   </div>
   <script src="script.js"></script>
