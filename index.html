@@ -1,35 +1,53 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="ko">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>IoT Test</title>
   <link href="style.css" rel="stylesheet" type="text/css" />
   <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-database.js"></script>
 </head>
-
 <body>
   <div class="container">
-    <h1>반도체 소프트웨어</h1>
-    <h2>IoT Programming</h2>
-    <img id="img" src="ledOff.png" width="40%">
-    <div class="button-container">
-      <button type="button" class="onbutton" onclick="ledON()">LED ON</button>
-      <button type="button" class="offbutton" onclick="ledOFF()">LED OFF</button>
-    </div>
-    <p id="temperature" class="temperature-text">현재 온도는 측정중입니다...</p>
+    <header>
+      <h1>반도체 소프트웨어</h1>
+      <h2>IoT Programming</h2>
+    </header>
 
-    <div class="chat-container">
-      <div id="chatbox" class="chatbox"></div>
+    <section class="led-control">
+      <img id="img" src="ledOff.png" alt="LED 상태" />
+      <div class="button-container">
+        <button type="button" class="onbutton" onclick="ledON()">LED ON</button>
+        <button type="button" class="offbutton" onclick="ledOFF()">LED OFF</button>
+      </div>
+    </section>
+
+    <section class="matrix-sensor-wrapper">
+      <div id="matrix" class="led-matrix"></div>
+      <div class="sensor-info">
+        <h3>센서 정보</h3>
+        <div><strong>온도:</strong> <span id="temp">--</span> °C</div>
+        <div><strong>습도:</strong> <span id="humidity">--</span> %</div>
+        <div><strong>기압:</strong> <span id="pressure">--</span> hPa</div>
+        <div><strong>자이로:</strong> <span id="gyro">--</span></div>
+        <div><strong>가속도:</strong> <span id="accel">--</span></div>
+        <div><strong>마지막 업데이트:</strong> <span id="last-update">--</span></div>
+      </div>
+    </section>
+
+    <section class="chat-container">
       <div class="input-button-container">
-        <input type="text" id="chatInput" placeholder="메시지를 입력하세요..." />
+        <input
+          type="text"
+          id="chatInput"
+          placeholder="메시지를 입력하세요..."
+          onkeyup="checkEnter(event)"
+        />
         <button class="textbutton" onclick="sendMessage()">전송</button>
       </div>
-    </div>
+    </section>
   </div>
   <script src="script.js"></script>
 </body>
-
 </html>
